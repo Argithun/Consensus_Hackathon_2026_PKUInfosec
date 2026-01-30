@@ -1,0 +1,16 @@
+[package]
+name = "hackathon_2026_pkuinfosec"
+version = "1.0.0"
+authors = []
+
+[addresses]
+hackathon_2026_pkuinfosec = "0x24bc9dae0f45cee934160261104c1d5d9cc509f224bf4c09eaf4a80a6792ee26"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
