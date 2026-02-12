@@ -1,0 +1,81 @@
+%%{init: {
+  "theme": "base",
+  "background": "transparent",
+  "flowchart": {
+    "nodeSpacing": 60,
+    "rankSpacing": 70,
+    "padding": 20
+  },
+  "themeVariables": {
+    "fontFamily": "Inter, sans-serif",
+    "fontSize": "22px",
+    "clusterBkg": "transparent",
+    "clusterBorder": "#90caf9",
+    "lineColor": "#4fc3f7"
+  }
+}}%%
+
+flowchart LR
+
+%% ================= USERS =================
+subgraph USERS["Users"]
+direction TB
+Buyer["Buyer"]
+Holder["Holder / LP"]
+end
+
+%% ================= PROTOCOL =================
+subgraph AEGISFLOW["AegisFlow Protocol"]
+direction LR
+
+Aggregator["Buy Aggregator"]
+
+Router["Router"]
+
+AutoSell["Auto-Sell Engine"]
+
+Penalty["Penalty"]
+
+InsPool["Insurance Pool"]
+
+end
+
+%% ================= EXTERNAL =================
+subgraph EXTERNAL["External"]
+direction TB
+Pool["RobinPump AMM"]
+SubgraphNode["Goldsky"]
+end
+
+%% ================= FLOWS =================
+
+Buyer --> Aggregator
+Aggregator --> AutoSell
+Aggregator --> Pool
+
+Holder --> Router
+Router --> AutoSell
+Router --> Penalty
+
+AutoSell --> InsPool
+Penalty --> InsPool
+InsPool --> Holder
+
+AutoSell <-->|buy / sell| Pool
+SubgraphNode -.-> Router
+
+%% ================= STYLE =================
+
+classDef userNode fill:#1565c0,stroke:#42a5f5,stroke-width:3px,color:#ffffff
+classDef coreNode fill:#1b5e20,stroke:#66bb6a,stroke-width:3px,color:#ffffff
+classDef penaltyNode fill:#c62828,stroke:#ef5350,stroke-width:3px,color:#ffffff
+classDef rewardNode fill:#ef6c00,stroke:#ffa726,stroke-width:3px,color:#ffffff
+classDef externalNode fill:#4527a0,stroke:#ab47bc,stroke-width:3px,color:#ffffff
+classDef aggregatorNode fill:#01579b,stroke:#29b6f6,stroke-width:3px,color:#ffffff
+
+class Buyer,Holder userNode
+class Router,AutoSell coreNode
+class Penalty penaltyNode
+class InsPool rewardNode
+class Pool,SubgraphNode externalNode
+class Aggregator aggregatorNode
