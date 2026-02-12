@@ -44,8 +44,9 @@
 
 ## Demo Video
 
-<!-- TODO: Add demo video link -->
-> _Coming soon — a short demo showcasing the full user flow._
+<video width="320" height="240" controls>
+    <source src="./pic/demo_video.mp4" type="video/mp4">
+</video>
 
 ---
 
