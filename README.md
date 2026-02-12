@@ -44,9 +44,9 @@
 
 ## Demo Video
 
-<video width="320" height="240" controls>
-    <source src="./pic/demo_video.mp4" type="video/mp4">
-</video>
+
+https://github.com/user-attachments/assets/8625e136-b3bf-474f-b36e-76a0ad4e7b5f
+
 
 ---
 
